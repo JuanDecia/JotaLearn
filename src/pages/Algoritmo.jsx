@@ -379,7 +379,6 @@ export const AsideNavigation = styled.div`
   width: 25%;
   height: 100%;
   background-color: rgba(243, 244, 246, 0.89);
-  border-right: 1px solid red;
   transition: transform 0.3s;
   transform: translateX(-100%);
   position: fixed;
@@ -446,6 +445,12 @@ export const AsideNavigation = styled.div`
         }
       }
     }
+  }
+
+  @media (max-width: 992px) {
+    width: 45%;
+
+
   }
 `;
 

@@ -35,6 +35,35 @@ const EstructuraAlgoritmo = () => {
                         title='ejemplo-algoritmo'
                     />
                 </figure>
+
+                <h3>Características principales</h3>
+
+                <ul>
+                    <li>
+                        <b>Secuencia de Instrucciones: </b>Las instrucciones se ejecutan de arriba a abajo, una tras otra.
+                    </li>
+                    <li>
+                        <b>Un puto de Entrada y Salida: </b>La ejecución comienza en un punto de entrada y continúa hasta un punto de salida sin bifurcaciones.
+                    </li>
+                    <li>
+                        <b>Ejecución Unidireccional: </b>No hay bucles ni saltos; el flujo es lineal.
+                    </li>
+                    <li>
+                        <b>Fácil Lectura y Mantenimiento: </b>Debido a su simplicidad, es fácil de leer, entender y mantener.
+                    </li>
+                </ul>
+            </article>
+
+            {/* Estructura Condicional */}
+            <article>
+                <h2>Estructura Condicional</h2>
+
+
+            </article>
+
+            {/* Estructura Repetitiva */}
+            <article>
+                <h2>Estructura Repetitiva</h2>
             </article>
         </section>
     
@@ -49,12 +78,21 @@ export const MainContainer = styled.div`
     & .main-content {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: 40px;
 
         & article {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
+
+            & ul {
+                list-style-type: disc;
+                margin-left: 30px;
+    
+                & li:nth-child(odd) {
+                    margin: 20px 0;
+                }
+            }
 
             & figure {
                 display: flex;

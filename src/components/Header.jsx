@@ -114,6 +114,16 @@ export const ContHeader = styled.div`
   & .cont-get-started:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 992px) {
+    & .cont-title {
+      display: none;
+    }
+
+    & .cont-get-started {
+      width: 17%;
+    }
+  }
 `;
 
 // Contenedor Navbar
