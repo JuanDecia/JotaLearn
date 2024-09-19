@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 // Iconos
 import { IoIosCode } from "react-icons/io";
@@ -11,39 +11,22 @@ import { FaNodeJs } from "react-icons/fa";
 import { GoDatabase } from "react-icons/go";
 import { GrCatalogOption } from "react-icons/gr";
 
-const Home = ({ cardsRef }) => {
+const Lenguajes = ( { cardsRef } ) => {
   return (
-    <HomeContenedor>
-      {/* SECCIÓN HERO */}
-      <section className="hero">
-        <h1>Aprende Programación y Desarrollo Web con Jota!</h1>
-
-        <div className="cont-subtitle">
-          <h2>
-            Desbloquea todo tu potencial guardado que tienes como programador
-            con nuestros intensivos cursos
-          </h2>
-        </div>
-
-        <div
-          className="cont-get-started"
-          onClick={() =>
-            cardsRef.current.scrollIntoView({ behavior: "smooth" })
-          }
-        >
-          Get Started
-        </div>
-      </section>
-
+    <MainContainer>
       {/* SECCIÓN CARDS */}
       <section className="card-section" ref={cardsRef}>
-        <article className="cont-cards">
 
+        <article>
+            <h1>Elegí el lenguaje que quieras desarrollar!</h1>
+        </article>
+
+        <article className="cont-cards">
           {/* Card Introducción */}
           <div className="card">
-            <Link to={'/Algoritmo'}>
+            <Link to={"/Algoritmo"}>
               <div className="cont-icono">
-                <GrCatalogOption className="card-icono"/>
+                <GrCatalogOption className="card-icono" />
               </div>
 
               <div className="cont-card-title">
@@ -58,7 +41,7 @@ const Home = ({ cardsRef }) => {
 
           {/* Card HTML */}
           <div className="card">
-            <Link to='/Html'>
+            <Link to="/Html">
               <div className="cont-icono">
                 <IoIosCode className="card-icono" />
               </div>
@@ -117,9 +100,7 @@ const Home = ({ cardsRef }) => {
             </div>
 
             <div className="cont-card-foundaments">
-              <p>
-                Explora el poder de React creando aplicaciones web modernas
-              </p>
+              <p>Explora el poder de React creando aplicaciones web modernas</p>
             </div>
           </div>
 
@@ -159,13 +140,14 @@ const Home = ({ cardsRef }) => {
           </div>
         </article>
       </section>
-    </HomeContenedor>
+    </MainContainer>
   );
 };
 
-export const HomeContenedor = styled.div`
-  background-color: rgb(229, 228, 230);
-  font-family: "Ubuntu", sans-serif;
+export const MainContainer = styled.div`
+
+background-color: rgb(228, 228, 230);
+font-family: "Ubuntu", sans-serif;
 
   & .hero {
     display: flex;
@@ -177,8 +159,10 @@ export const HomeContenedor = styled.div`
   }
 
   & h1 {
-    font-size: 3.3em;
+    margin-top: 30px;
+    font-size: 3em;
     text-align: center;
+    color: #5c65c9;
   }
 
   & h2 {
@@ -216,7 +200,7 @@ export const HomeContenedor = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    margin: 110px 0;
+    margin: 50px 0;
   }
 
   & .card {
@@ -256,4 +240,4 @@ export const HomeContenedor = styled.div`
   }
 `;
 
-export default Home;
+export default Lenguajes;

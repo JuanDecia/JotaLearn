@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Importación Componentes y Páginas
 import Header from '../components/Header';
 import Home from '../pages/Home';
+import Lenguajes from '../pages/Lenguajes';
 import Algoritmo from '../pages/Algoritmo';
 import Html from '../pages/Html';
 import Css from '../pages/Css';
@@ -21,9 +22,12 @@ export const AppRouter = () => {
         {/* Main Page */}
         <Route exact path='/' element={<Home cardsRef={cardsRef}/>} />
 
+        {/* Links Header */}
+        <Route path='/Lenguajes' element={ <Lenguajes /> } />
+
         {/* Languages Pages */}
         <Route path='/Algoritmo/*' element={<Algoritmo />} />
-        <Route path='/Html/*' element={<Html />} />
+        <Route path='/Html' element={<Html />} />
         <Route path='/Css' element={<Css />} />
         <Route path='/JavaScript' element={<JavaScript />} />
 

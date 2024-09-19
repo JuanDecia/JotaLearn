@@ -1,26 +1,21 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
+import { useSidebar } from "../components/SidebarContext";
+import DropdownSection from "../components/DropdownSection";
 
-// PÁGINAS ALGORITMO
+// PAGES & SUB PAGES
 import Caracteristicas from "./introduccionProgramacion/algoritmo/Caracteristicas";
 import PartesAlgoritmo from "./introduccionProgramacion/algoritmo/PartesAlgoritmo";
 import TiposAlgoritmo from "./introduccionProgramacion/algoritmo/TiposAlgoritmo";
-
-// PÁGINAS BASES
 import IntroduccionProgramacion from "./introduccionProgramacion/basesProgramacion/IntroduccionProgramacion";
 import ConceptosFundamentales from "./introduccionProgramacion/basesProgramacion/ConceptosFundamentales";
-
-// PÁGINAS PSEUDOCÓDIGO
 import Pseudocodigo from "./introduccionProgramacion/pseudocodigo/Pseudocodigo";
-
-// PÁGINAS DIAGRAMA
 import DiagramaIntroduccion from "./introduccionProgramacion/diagramaFlujo/DiagramaIntroduccion";
-
-// ICONOS 
-import { CiMenuBurger } from "react-icons/ci";
 import EstructuraAlgoritmo from "./introduccionProgramacion/algoritmo/EstructuraAlgoritmo";
 
+// ICONS
+import { CiMenuBurger } from "react-icons/ci";
 
 // PÁGINA INICIAL
 const Introduccion = () => {
@@ -49,18 +44,21 @@ const Introduccion = () => {
   )
 };
 
-// ESTRUCTURAS SUB INDICES
+// VIEWPORT
+
+  // ## Sub-index structure ##
 
 const Algoritmo = () => {
-  const [isopen, setIsOpen] = useState(false);
+
+  const { state, dispatch } = useSidebar();
   const [openSections, setOpenSections] = useState({}); // Estado para gestionar las secciones despegables
 
   const toggleSidebar = () => {
-    setIsOpen(!isopen);
+    dispatch({ type: 'TOGGLE_SIDEBAR' });
   };
 
   const closeSidebar = () => {
-    setIsOpen(false);
+    dispatch( {type: 'TOGGLE_SIDEBAR' });
   };
 
   const handleClickOutside = (event) => {
@@ -83,7 +81,7 @@ const Algoritmo = () => {
   };
 
   useEffect(() => {
-    if (isopen) {
+    if (state.isSidebarOpen) {
       document.addEventListener("click", handleClickOutside);
     } else {
       document.removeEventListener("click", handleClickOutside);
@@ -92,16 +90,16 @@ const Algoritmo = () => {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isopen]);
+  }, [state.isSidebarOpen]);
 
+  // ## viewport display ##
   return (
-    <MainContainer $isopen={isopen.toString()}>
-      {isopen && <Overlay />}
-      <main className={isopen ? "open" : "closed"}>
+    <MainContainer $isopen={state.isSidebarOpen.toString()}>
+      {state.isSidebarOpen && <Overlay />}
+      <main className={state.isSidebarOpen ? "open" : "closed"}>
         <section className="main-content">
           <CargaPagina>
             <Routes>
-              {/* <Route path="introduccion" element={<Introduccion />} /> */}
               
               {/* Algoritmos páginas */}
               <Route 
@@ -148,16 +146,11 @@ const Algoritmo = () => {
         </section>
 
         {/* Contenedor Nav */}
-        <AsideNavigation className={isopen ? "open" : "closed"}>
+        <AsideNavigation className={state.isSidebarOpen ? "open" : "closed"}>
           <nav>
             <ul className="lista-indices">
-              {/* Algoritmos */}
-              <li className="indice-principal">
-                <div className="cont-indice-principal" onClick={() => toggleSection("algoritmos")}>
-                  <span className="link-indice-principal">Algoritmos</span>
-                </div>
-                {openSections.algoritmos && (
-                  <ul className="lista-temas">
+              <DropdownSection title='Algoritmos'>
+                <ul className="lista-temas">
                     <li className="subindice" onClick={closeSidebar}>
                       <Link to="/Algoritmo/introduccionProgramacion/algoritmo/Caracteristicas">
                         1. Características
@@ -178,15 +171,11 @@ const Algoritmo = () => {
                         4. Tipos de algoritmos
                       </Link>
                     </li>
-                  </ul>
-                )}
+                </ul>
+              </DropdownSection>
 
-                {/* Bases programacion */}
-                <div className="cont-indice-principal" onClick={() => toggleSection('logica')}>
-                  <span className="link-indice-principal">Bases de programación</span>
-                </div>
-                {openSections.logica && (
-                  <ul className="lista-temas">
+              <DropdownSection title="Bases de programación">
+                <ul className="lista-temas">
                     <li className="subindice" onClick={closeSidebar}>
                       <Link 
                         to="/Algoritmo/introduccionProgramacion/basesProgramacion/IntroduccionProgramacion">
@@ -199,42 +188,30 @@ const Algoritmo = () => {
                           2. Conceptos Fundamentales
                       </Link>
                     </li>
-                  </ul>
-                )}
+                </ul>
+              </DropdownSection>
 
-                {/* Pseudocódigo */}
-                <div className="cont-indice-principal" onClick={() => toggleSection('pseudocodigo')}>
-                  <span className="link-indice-principal">Pseudocódigo</span>
-                </div>
-                {openSections.pseudocodigo && (
-                  <ul className="lista-temas">
+              <DropdownSection title='Pseudocódigo'>
+                <ul className="lista-temas">
                     <li className="subindice" onClick={closeSidebar}>
                       <Link to="/Algoritmo/introduccionProgramacion/pseudocodigo/Pseudocodigo">1. Introducción Pseudocodigo</Link>
                     </li>
-                  </ul>
-                )}
+                </ul>
+              </DropdownSection>
 
-                {/* Diagrama de Flujo */}
-                <div className="cont-indice-principal" onClick={() => toggleSection('diagramaFlujo')}>
-                  <span className="link-indice-principal">Diagramas de flujo</span>
-                </div>
-                {openSections.diagramaFlujo && (
+              <DropdownSection title='Diagramas de flujo'>
                   <ul className="lista-temas">
                     <li className="subindice" onClick={closeSidebar}>
                       <Link to="/Algoritmo/introduccionProgramacion/diagramaFlujo/DiagramaIntroduccion">1. Introducción a diagrama de flujo</Link>
                     </li>
                   </ul>
-                )}
+              </DropdownSection>
 
-                {/* Pseint */}
-                <div className="cont-indice-principal" onClick={() => toggleSection('pseint')}>
-                  <span className="link-indice-principal">Pseint</span>
-                </div>
-                {openSections.pseint && (
-                  <ul></ul>
-                )}
-                
-              </li>
+              <DropdownSection title='Pseint'>
+                  <ul className="lista-temas">
+
+                  </ul>
+              </DropdownSection>
             </ul>
           </nav>
         </AsideNavigation>
@@ -449,8 +426,6 @@ export const AsideNavigation = styled.div`
 
   @media (max-width: 992px) {
     width: 45%;
-
-
   }
 `;
 
