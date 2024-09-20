@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
+import UseToggleSections from '../components/useToggleSections'
 
 // PÁGINAS ALGORITMO
 import Caracteristicas from "./introduccionProgramacion/algoritmo/Caracteristicas";
 import PartesAlgoritmo from "./introduccionProgramacion/algoritmo/PartesAlgoritmo";
 import TiposAlgoritmo from "./introduccionProgramacion/algoritmo/TiposAlgoritmo";
+import EstructuraAlgoritmo from "./introduccionProgramacion/algoritmo/EstructuraAlgoritmo";
 
 // PÁGINAS BASES
 import IntroduccionProgramacion from "./introduccionProgramacion/basesProgramacion/IntroduccionProgramacion";
@@ -19,7 +21,6 @@ import DiagramaIntroduccion from "./introduccionProgramacion/diagramaFlujo/Diagr
 
 // ICONOS 
 import { CiMenuBurger } from "react-icons/ci";
-import EstructuraAlgoritmo from "./introduccionProgramacion/algoritmo/EstructuraAlgoritmo";
 
 
 // PÁGINA INICIAL
@@ -53,46 +54,46 @@ const Introduccion = () => {
 
 const Algoritmo = () => {
   const [isopen, setIsOpen] = useState(false);
-  const [openSections, setOpenSections] = useState({}); // Estado para gestionar las secciones despegables
-
-  const toggleSidebar = () => {
-    setIsOpen(!isopen);
-  };
-
+  
   const closeSidebar = () => {
     setIsOpen(false);
   };
-
-  const handleClickOutside = (event) => {
-    // Verifica si el clic se realizó fuera de la barra lateral, el menú o el índice principal
-    if (
-      event.target.closest(".aside-navigation") === null && // Click fuera del nav
-      event.target.closest(".menu-icon-container") === null && // Click fuera del ícono del menú
-      event.target.closest(".indice-principal") === null && // Click fuera del índice principal
-      event.target.closest(".subindice") === null // Click fuera de los subíndices
-    ) {
-      closeSidebar();
-    }
+  
+  const { openSections, toggleSection, closeAllSections } = UseToggleSections(closeSidebar); // Estado para gestionar las secciones despegables
+  
+  const toggleSidebar = () => {
+    setIsOpen(!isopen);
   };
+  // const handleClickOutside = (event) => {
+  //   // Verifica si el clic se realizó fuera de la barra lateral, el menú o el índice principal
+  //   if (
+  //     event.target.closest(".aside-navigation") === null && // Click fuera del nav
+  //     event.target.closest(".menu-icon-container") === null && // Click fuera del ícono del menú
+  //     event.target.closest(".indice-principal") === null && // Click fuera del índice principal
+  //     event.target.closest(".subindice") === null // Click fuera de los subíndices
+  //   ) {
+  //     closeSidebar();
+  //   }
+  // };
 
-  const toggleSection = (section) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
+  // const toggleSection = (section) => {
+  //   setOpenSections((prev) => ({
+  //     ...prev,
+  //     [section]: !prev[section],
+  //   }));
+  // };
 
-  useEffect(() => {
-    if (isopen) {
-      document.addEventListener("click", handleClickOutside);
-    } else {
-      document.removeEventListener("click", handleClickOutside);
-    }
+  // useEffect(() => {
+  //   if (isopen) {
+  //     document.addEventListener("click", handleClickOutside);
+  //   } else {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   }
 
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, [isopen]);
+  //   return () => {
+  //     document.removeEventListener("click", handleClickOutside);
+  //   };
+  // }, [isopen]);
 
   return (
     <MainContainer $isopen={isopen.toString()}>
@@ -101,7 +102,6 @@ const Algoritmo = () => {
         <section className="main-content">
           <CargaPagina>
             <Routes>
-              {/* <Route path="introduccion" element={<Introduccion />} /> */}
               
               {/* Algoritmos páginas */}
               <Route 
