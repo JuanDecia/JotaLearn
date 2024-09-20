@@ -164,7 +164,7 @@ const Home = ({ cardsRef }) => {
 };
 
 export const HomeContenedor = styled.div`
-  background-color: rgb(229, 228, 230);
+  background-color: rgb(228, 228, 230);
   font-family: "Ubuntu", sans-serif;
 
   & .hero {

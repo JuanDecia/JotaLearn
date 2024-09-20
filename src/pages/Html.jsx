@@ -1,44 +1,64 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+// Importación Librerias
+import React from 'react';
+import styled from 'styled-components';
+import { Link, Route, Routes } from 'react-router-dom';
 
-// MAIN PAGE
-
-const IntroductionViewport = () => {
-  return(
-    <IntroductionContainer>
-      <section>
-        <h1>Bienvenidos a HTML</h1>
-      </section>
-
-      <section>
-        <h2>Introducción</h2>
-
-      </section>
-    </IntroductionContainer>
-  )
-}
+// Importacion páginas internas
+import Introduccion from './html/introduccion/IntroduccionHtml';
+import ConstruccionArchivoHtml from './html/introduccion/ConstruccionArchivo'; // Ensure the file name is correct
+import EstructuraPrincipal from './html/introduccion/EstructuraPrincipalHTML'; // Ensure the file name is correct
 
 const Html = () => {
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [openSections, setOpenSections] = useState({});
-
   return (
-    <MainContainer>
-
-    </MainContainer>
+    <SectionHtml>
+      <aside className='cont-glosario'>
+        <Glosario>
+          <ol>
+            <li>Introducción a HTML</li>
+            <ul>
+              <li><Link to='/Html/html/introduccion'>Introducción.</Link></li>
+              <li><Link to='/Html/html/construccion-archivo'>Construcción archivo HTML.</Link></li>
+              <li><Link to='/Html/html/estructura-principal'>Estructura principal en HTML.</Link></li>
+            </ul>
+          </ol>
+        </Glosario>
+      </aside>
+      <article className='cont-resultado'>
+        <ResultadoGlosario>
+          <Routes>
+            <Route path="/Html/introduccion" element={<Introduccion />} />
+            <Route path="/Html/construccion-archivo" element={<ConstruccionArchivoHtml />} />
+            <Route path="/Html/estructura-principal" element={<EstructuraPrincipal />} />
+          </Routes>
+        </ResultadoGlosario>
+      </article>
+    </SectionHtml>
   )
 }
 
-export const IntroductionContainer = styled.div`
+export const SectionHtml = styled.div `
   display: flex;
-  flex-direction: column;
-  gap: 40px;
-  
+  border: 1px solid black;
+
+  & .cont-glosario {
+    width: 20%;
+    border: 1px solid red;
+  }
+
+  & .cont-resultado {
+    width: 100%;
+    border: 1px solid blue;
+  }
 `;
 
-export const MainContainer = styled.div`
+// Componente Glosario
+export const Glosario = styled.div`
+  padding: 20px;
+`;
 
-`
+// Componente Resultado
+export const ResultadoGlosario = styled.div`
+  padding: 10px;
+`;
 
-export default Html
+export default Html;
