@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Importación Componentes y Páginas
 import Header from '../components/Header';
+import Lenguajes from '../pages/Lenguajes';
 import Home from '../pages/Home';
 import Algoritmo from '../pages/Algoritmo';
 import Html from '../pages/Html';
@@ -18,12 +19,16 @@ export const AppRouter = () => {
     <Router>
       <Header cardsRef={cardsRef} />
       <Routes>
+
+        {/* Header Pages */}
+        <Route path='Lenguajes' element={ <Lenguajes /> } />
+
         {/* Main Page */}
         <Route exact path='/' element={<Home cardsRef={cardsRef}/>} />
 
         {/* Languages Pages */}
         <Route path='/Algoritmo/*' element={<Algoritmo />} />
-        <Route path='/Html/*' element={<Html />} />
+        <Route path='/Html' element={<Html />} />
         <Route path='/Css' element={<Css />} />
         <Route path='/JavaScript' element={<JavaScript />} />
 

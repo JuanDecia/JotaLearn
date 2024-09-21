@@ -3,27 +3,26 @@ import styled, { keyframes } from "styled-components";
 import { Link, Route, Routes } from "react-router-dom";
 import UseToggleSections from '../components/useToggleSections'
 
-// PÁGINAS ALGORITMO
+// Algoritmo Pages
 import Caracteristicas from "./introduccionProgramacion/algoritmo/Caracteristicas";
 import PartesAlgoritmo from "./introduccionProgramacion/algoritmo/PartesAlgoritmo";
 import TiposAlgoritmo from "./introduccionProgramacion/algoritmo/TiposAlgoritmo";
 import EstructuraAlgoritmo from "./introduccionProgramacion/algoritmo/EstructuraAlgoritmo";
 
-// PÁGINAS BASES
+// Bases Pages
 import IntroduccionProgramacion from "./introduccionProgramacion/basesProgramacion/IntroduccionProgramacion";
 import ConceptosFundamentales from "./introduccionProgramacion/basesProgramacion/ConceptosFundamentales";
 
-// PÁGINAS PSEUDOCÓDIGO
+// Pseudocódigo Pages
 import Pseudocodigo from "./introduccionProgramacion/pseudocodigo/Pseudocodigo";
 
-// PÁGINAS DIAGRAMA
+// Diagrama Pages
 import DiagramaIntroduccion from "./introduccionProgramacion/diagramaFlujo/DiagramaIntroduccion";
 
-// ICONOS 
+// Icons 
 import { CiMenuBurger } from "react-icons/ci";
 
-
-// PÁGINA INICIAL
+// Initial Page
 const Introduccion = () => {
   return(
     <StyledArticle>
