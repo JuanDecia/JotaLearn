@@ -23,7 +23,7 @@ const Html = () => {
           <h1>Bienvenidos a HTML</h1>
         </article>
 
-        {/* Contenedor Introduccion */}
+        {/* Introduction Container */}
         <article className="cont-introduccion">
           <div className="cont-parrafo">
             <p>
@@ -64,7 +64,7 @@ const Html = () => {
           </div>
         </article>
 
-        {/* Contenedor Descripcion Etiqueta */}
+        {/* Tag Container Description */}
         <article className="cont-etiqueta">
           <div className="cont-subTitulo">
             <h2 className="subtitulo">¿Qué es una etiqueta?</h2>

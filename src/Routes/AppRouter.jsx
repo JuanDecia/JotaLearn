@@ -1,5 +1,6 @@
 import React, {useRef} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Importación Componentes y Páginas
 import Header from '../components/Header';
@@ -28,9 +29,9 @@ export const AppRouter = () => {
 
         {/* Languages Pages */}
         <Route path='/Algoritmo/*' element={<Algoritmo />} />
-        <Route path='/Html' element={<Html />} />
-        <Route path='/Css' element={<Css />} />
-        <Route path='/JavaScript' element={<JavaScript />} />
+        <Route path='/Html/*' element={<Html />} />
+        <Route path='/Css/*' element={<Css />} />
+        <Route path='/JavaScript/*' element={<JavaScript />} />
 
         {/* NotFound Page */}
         <Route exact path='*' element={<NotFound />} />
