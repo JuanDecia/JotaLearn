@@ -52,6 +52,34 @@ export const MainContainer = styled.div`
     flex-direction: column;
     font-family: "Ubuntu", sans-serif;
 
+    /* General Styles */
+    & h1 {
+      font-size: 2.5em;
+      animation: ${fade} 1.2s ease-in, ${slideDown} 1.5s ease-in-out;
+      color: rgb(11, 104, 211);
+    }
+    
+    & h2 {
+      font-size: 1.9em;
+      animation: ${fade} 1.2s ease-in, ${slideRight} 1.5s ease-in-out;
+      color: #5c65c9;
+    }
+
+    & ul {
+      list-style: disc;
+      margin-left: 25px;
+      text-align: justify;
+
+      & li:nth-child(odd) {
+        margin: 10px 0;
+      }
+    }
+
+    & p {
+      text-align: justify;
+      line-height: 24px;
+    }
+
     /* Styles all content */
     & .main-container {
       display: flex;
@@ -67,34 +95,36 @@ export const MainContainer = styled.div`
         justify-content: center;
         margin-top: 40px;
   
-            & h1 {
-              font-size: 2.5em;
-              animation: ${fade} 1.2s ease-in, ${slideDown} 1.5s ease-in-out;
-              color: rgb(11, 104, 211);
-            }
       }
   
-      /* Styles content */
       & .content-container {
           display: flex;
           flex-direction: column;
-          gap: 25px;
+          gap: 30px;
 
-          & h2 {
-            font-size: 1.9em;
-            animation: ${fade} 1.2s ease-in, ${slideRight} 1.5s ease-in-out;
-            color: #5c65c9;
-          }
-
-          & .cont-introduccion {
+          & article {
             display: flex;
             flex-direction: column;
             gap: 30px;
           }
+
+          & .cont-parrafo {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          & figure {
+            display: flex;
+
+            /* Img (figure children) */
+            & img {
+              max-width: 100%;
+            }
+          }
+
       }
     }
-
-
-`
+`;
 
 export default LanguageLayout

@@ -19,8 +19,9 @@ import { CiMenuBurger } from "react-icons/ci";
 const Html = () => {
   return (
     <LanguageLayout title="Bienvenidos a HTML">
+
       {/* Introduction Container */}
-      <article className="cont-introduccion">
+      <article className="introduction-article">
 
         <h2>Introducción a HTML</h2>
 
@@ -36,13 +37,13 @@ const Html = () => {
           </p>
         </div>
 
-        <div className="cont-img">
+        <figure>
           <img
             src="https://leonorcanuelo.com/wp-content/uploads/2015/12/1-1.png"
             alt="ejemplo html"
             title="ejemplohtml"
           />
-        </div>
+        </figure>
 
         <div className="cont-parrafo">
           <p>
@@ -61,7 +62,7 @@ const Html = () => {
       </article>
 
       {/* Tag Container Description */}
-      <article className="cont-etiqueta">
+      <article className="tag-container">
         <div className="cont-subTitulo">
           <h2 className="subtitulo">¿Qué es una etiqueta?</h2>
         </div>
@@ -70,8 +71,8 @@ const Html = () => {
           <p>
             Una etiqueta en HTML es una{" "}
             <strong>
-              palabra o conjunto de palabras rodeadas por corchetes angulares
-              “&#60 &#62”
+              palabra o conjunto de palabras rodeadas por corchetes angulares {" "}
+              {" '<>' "}
             </strong>{" "}
             que indican el inicio y el fin de un elemento. Las etiquetas suelen
             tener un formato de apertura y cierre, con el formato de cierre
@@ -79,8 +80,8 @@ const Html = () => {
           </p>
 
           <p>
-            Por ejemplo, la etiqueta &#60p&#62 indica el inicio de un párrafo, y
-            la etiqueta &#60/p&#62 indica su fin. Así, todo el texto incluido
+            Por ejemplo, la etiqueta <b>{" '<p>' "}</b> indica el inicio de un párrafo, y
+            la etiqueta <b>{"</p>"}</b> indica su fin. Así, todo el texto incluido
             entre estas dos etiquetas se consideraría un párrafo.
           </p>
 
@@ -88,7 +89,7 @@ const Html = () => {
             Las etiquetas pueden tener <strong>atributos</strong>, que son
             valores que se añaden a la etiqueta para proporcionar{" "}
             <strong>información adicional sobre el elemento</strong>. Por
-            ejemplo, la etiqueta &#60img&#62 se utiliza para mostrar imágenes en
+            ejemplo, la etiqueta <b>{"<img />"}</b> se utiliza para mostrar imágenes en
             una página web, y puede tener el <strong>atributo "src"</strong>,
             que especifica la dirección URL de la imagen que se debe mostrar.
           </p>
@@ -101,9 +102,9 @@ const Html = () => {
         </div>
       </article>
 
-      <article className="cont-objetivos">
+      <article className="objectives-article">
+        <h2 className="subtitulo">Objetivos:</h2>
         <div id="cont-lista">
-          <h2 className="subtitulo">Objetivos:</h2>
           <ul className="lista-objetivos">
             <li>
               Identificar el funcionamiento del navegador como herramienta para
@@ -160,6 +161,11 @@ const Html = () => {
     </LanguageLayout>
   );
 };
+
+// ### STRUCTURE SUBINDEX ###
+const AsideSubindex = () => {
+  
+}
 
 
 // Componente Glosario
