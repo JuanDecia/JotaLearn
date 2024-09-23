@@ -63,36 +63,6 @@ const Algoritmo = () => {
   const toggleSidebar = () => {
     setIsOpen(!isopen);
   };
-  // const handleClickOutside = (event) => {
-  //   // Verifica si el clic se realizó fuera de la barra lateral, el menú o el índice principal
-  //   if (
-  //     event.target.closest(".aside-navigation") === null && // Click fuera del nav
-  //     event.target.closest(".menu-icon-container") === null && // Click fuera del ícono del menú
-  //     event.target.closest(".indice-principal") === null && // Click fuera del índice principal
-  //     event.target.closest(".subindice") === null // Click fuera de los subíndices
-  //   ) {
-  //     closeSidebar();
-  //   }
-  // };
-
-  // const toggleSection = (section) => {
-  //   setOpenSections((prev) => ({
-  //     ...prev,
-  //     [section]: !prev[section],
-  //   }));
-  // };
-
-  // useEffect(() => {
-  //   if (isopen) {
-  //     document.addEventListener("click", handleClickOutside);
-  //   } else {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   }
-
-  //   return () => {
-  //     document.removeEventListener("click", handleClickOutside);
-  //   };
-  // }, [isopen]);
 
   return (
     <MainContainer $isopen={isopen.toString()}>
@@ -242,45 +212,12 @@ const Algoritmo = () => {
   );
 };
 
-
-// Animaciones
-const fade = keyframes`
-  from {
-      opacity: 0;
-    }
-  to {
-      opacity: 1;
-    }
-`;
-
-const slideRight = keyframes`
-  from {
-    transform: translateX(-250px);
-  }
-  to {
-    transform: translateX(0);
-  }
-`;
-
-const slideDown = keyframes`
-  from {
-    transform: translateY(-50px);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-
 // ### ESTILOS INTRODUCCION ###
 export const StyledArticle = styled.article`
   
   display: flex;
   flex-direction: column;
   gap: 15px;
-
-  & h2 {
-    animation: ${slideRight} 1.5s ease-in-out;
-  }
 
   & figure {
     display: flex;
@@ -312,12 +249,10 @@ export const MainContainer = styled.div`
     margin-bottom: 20px;
     font-size: 2.5em;
     text-align: center;
-    animation: ${fade} 1.2s ease-in, ${slideDown} 1.5s ease-in-out;
   }
 
   & h2 {
     font-size: 1.9em;
-    animation: ${fade} 1.3s ease-in, ${slideRight} 1.5s ease-in-out;
   }
 
   & h3 {
